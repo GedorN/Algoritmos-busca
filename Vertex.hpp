@@ -11,12 +11,14 @@ class Vertex {
         int distance;
         Vertex *p;
     public:
-    Vertex(Coordinate *xy);
+    Vertex();
     void setColor(char color);
     void setFather(Vertex* p);
     void setDistance(int d);
-    Coordinate* getCoordinates();
+    void setCoordinates(int *c);
+    Coordinate getCoordinates();
     Vertex* getFather();
     int getDistance();
     void print();
+    void del();
 };
