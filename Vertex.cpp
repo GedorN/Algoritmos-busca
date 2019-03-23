@@ -7,11 +7,20 @@ Vertex::Vertex() {
     distance = 0;
     p = nullptr;
     color = WHITE;
+    bool isPath = false;
 }
 
 void Vertex::setCoordinates(int *c) {
     coordinates[0] = c[0];
     coordinates[1] = c[1];
+}
+
+void Vertex::setPath() {
+    path = true;
+}
+
+bool Vertex::isPath() {
+    return path;
 }
 
 void Vertex::setColor(char c) {
@@ -26,8 +35,8 @@ void Vertex::setDistance(int d) {
     distance = d;
 }
 
-Coordinate Vertex::getCoordinates() {
-    return coordinates[0];
+Coordinate* Vertex::getCoordinates() {
+    return coordinates;
 }
 
 Vertex* Vertex::getFather() {

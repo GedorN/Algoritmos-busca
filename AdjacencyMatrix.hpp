@@ -9,4 +9,5 @@ class AdjacencyMatrix {
         AdjacencyMatrix();
         void createByTxt(char* file);
         void print();
+        void freeMatrix();
 };
