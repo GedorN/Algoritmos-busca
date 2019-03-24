@@ -2,8 +2,8 @@
 #include <iostream>
 using namespace std;
 Vertex::Vertex() {
-    coordinates[0] = 2;
-    coordinates[1] = 5;
+    coordinates[0] = 5;
+    coordinates[1] = 7;
     distance = 0;
     p = nullptr;
     color = WHITE;

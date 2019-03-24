@@ -27,10 +27,21 @@ void AdjacencyMatrix::createByTxt(char* file) {
     putchar('\n');
     for(int i = 0; i< rows; i++) {
         for(int j = 0; j< columns; j++) {
-            if (fgetc(maze) ==  '.') {
-                int aux[2] = {i, j};
+            char c = fgetc(maze);
+             int aux[2] = {i, j}; 
+            if (c ==  '.') {
                 matrix[i][j].setCoordinates(aux);
                 matrix[i][j].setPath();
+            } else if (c == '>') {
+                matrix[i][j].setCoordinates(aux);
+                matrix[i][j].setPath();
+                begin[0] = aux[0];
+                begin[1] = aux[1];
+            } else if (c == 'x') {
+                matrix[i][j].setCoordinates(aux);
+                matrix[i][j].setPath();
+                end[0] = aux[0];
+                end[1] = aux[1];
             }
         }
         fscanf(maze, "\n");
@@ -58,4 +69,32 @@ void AdjacencyMatrix::freeMatrix() {
     }
     delete [] matrix;
 }
+
+
+
+Vertex* AdjacencyMatrix::northNeighbor(Coordinate* c) {
+    Vertex a = matrix[c[0]][c[1] - 1];
+}
+Vertex* AdjacencyMatrix::northeastNeighbor(Coordinate* c) {
+
+}
+Vertex* AdjacencyMatrix::lestNeighbor(Coordinate* c) {
+
+}
+Vertex* AdjacencyMatrix::southeastNeighbor(Coordinate* c) {
+
+}
+Vertex* AdjacencyMatrix::southNeighbor(Coordinate* c) {
+
+}
+Vertex* AdjacencyMatrix::southWestNeighbor(Coordinate* c) {
+
+}
+Vertex* AdjacencyMatrix::westNeighbor(Coordinate* c) {
+
+}
+Vertex* AdjacencyMatrix::northwestNeighbor(Coordinate* c) {
+
+}
+
 

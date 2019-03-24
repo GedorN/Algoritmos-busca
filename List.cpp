@@ -1,26 +1,26 @@
 #include"List.hpp"
-
 #include<iostream>
 using namespace std;
 
 List::List()
 {
-    x = NULL;
-    y = NULL;
+    vertex = nullptr;
     next = nullptr;
 }
 
-List::List(Coordinate x0, Coordinate y0)
-{
-    x = x0;
-    y = y0; 
+List::List(Vertex* v)
+{ 
+    vertex = v; 
     next = nullptr;
 } 
 
-List* List::insert(Coordinate x, Coordinate y)
-{
-    List *created = new List(x, y);
-    List *aux = this; 
+List* List::insert(Vertex* v)
+{ 
+    List *created = new List(v);
+    List *aux = this;
+    if (aux->vertex == nullptr) {
+        return created;
+    }
     while(aux->next != nullptr) {
         aux = aux->next;
     }
@@ -32,11 +32,13 @@ List* List::insert(Coordinate x, Coordinate y)
 void List::print()
 {
     List *aux = this;
-    if(x == NULL || y == NULL) {
+    if(vertex == nullptr) {
+        cout<<"cheguei aqui" << endl;
         exit(9);
     }
     do {
-        cout << "(" << aux->x << ", " << aux->y << ")";
+        int *a = aux->vertex->getCoordinates();
+        cout << "(" << a[0] << ", " << a[1] << ")";
         aux = aux->next;
 
     } while (aux != nullptr);
@@ -45,18 +47,18 @@ void List::print()
 
 void List::destroyAll(List* list)
 {
-    List *aux = list;
-    List *i = aux;
-    if(this == nullptr) {
-        exit(9);
-    }
+    // List *aux = list;
+    // List *i = aux;
+    // if(this == nullptr) {
+    //     exit(9);
+    // }
 
-    while(i != NULL) {
-        cout << "deleting..." << aux->x << " " << aux->y << endl;
-        i = i->next;
-        delete(aux);
-        aux = i;
-    }
+    // while(i != NULL) {
+    //     cout << "deleting..." << aux->x << " " << aux->y << endl;
+    //     i = i->next;
+    //     delete(aux);
+    //     aux = i;
+    // }
 }
 
 int List::listSize() 

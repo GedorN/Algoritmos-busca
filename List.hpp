@@ -1,3 +1,4 @@
+#include"Vertex.hpp"
 #include<iostream>
 using namespace std;
 typedef int Coordinate;
@@ -5,13 +6,12 @@ typedef int Coordinate;
 class List {
     private:
         // char spot;
-        Coordinate x;
-        Coordinate y;
+        Vertex* vertex;
         List* next;
     public:
         List();
-        List(Coordinate x, Coordinate y);
-        List* insert(Coordinate x, Coordinate y);
+        List(Vertex* v);
+        List* insert(Vertex *v);
         int listSize();
         void print();
         void remove(Coordinate sport);
