@@ -2,12 +2,11 @@
 #include <iostream>
 using namespace std;
 Vertex::Vertex() {
-    coordinates[0] = 5;
-    coordinates[1] = 7;
+    coordinates[0] = NULL;
+    coordinates[1] = NULL;
     distance = 0;
     p = nullptr;
     color = WHITE;
-    bool isPath = false;
 }
 
 void Vertex::setCoordinates(int *c) {
@@ -15,12 +14,9 @@ void Vertex::setCoordinates(int *c) {
     coordinates[1] = c[1];
 }
 
-void Vertex::setPath() {
-    path = true;
-}
-
-bool Vertex::isPath() {
-    return path;
+void Vertex::setCoordinates(int x, int y) {
+    coordinates[0] = x;
+    coordinates[1] = y;
 }
 
 void Vertex::setColor(char c) {

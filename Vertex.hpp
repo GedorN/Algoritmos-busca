@@ -10,16 +10,14 @@ class Vertex {
         char color;
         int distance;
         Vertex *p;
-        bool path;
     public:
     Vertex();
     void setColor(char color);
     void setFather(Vertex* p);
     void setDistance(int d);
     void setCoordinates(int *c);
+    void setCoordinates(int x, int y);
     Coordinate* getCoordinates();
-    void setPath();
-    bool isPath();
     Vertex* getFather();
     int getDistance();
     void print();
