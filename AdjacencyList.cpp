@@ -76,7 +76,8 @@ AdjacencyList::AdjacencyList(Matrix* matrixObj) {
 }
 
 AdjacencyList::~AdjacencyList() {
-
+    cout<< "Destruindo Adjacency List" << endl;
+    free(list);
 }
 
 void AdjacencyList::print() {

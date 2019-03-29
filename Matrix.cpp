@@ -1,5 +1,5 @@
 #include "Matrix.hpp"
-#include <stdio_ext.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 Matrix::Matrix(char* maze) {
@@ -23,6 +23,7 @@ Matrix::Matrix(char* maze) {
 }
 
 Matrix::~Matrix() {
+    printf("Destruindo Matrix \n");
     for (int i = 0; i < rows; i ++) {
         free(matrix[i]);
     }

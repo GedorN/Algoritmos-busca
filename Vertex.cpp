@@ -9,6 +9,10 @@ Vertex::Vertex() {
     color = WHITE;
 }
 
+Vertex::~Vertex() {
+    
+}
+
 void Vertex::setCoordinates(int *c) {
     coordinates[0] = c[0];
     coordinates[1] = c[1];

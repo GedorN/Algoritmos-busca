@@ -8,6 +8,17 @@ List::List()
     next = nullptr;
 }
 
+List::~List() {
+    cout<< "Destruindo List" << endl;
+    List* walker = this;
+    List* aux = walker;
+    while(aux != nullptr) {
+        walker = aux->next;
+        free(aux->vertex);
+        aux = walker;
+    }
+}
+
 List::List(Vertex* v)
 { 
     vertex = v; 

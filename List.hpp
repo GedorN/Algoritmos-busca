@@ -11,6 +11,7 @@ class List {
         List* next;
     public:
         List();
+        ~List();
         List(Vertex* v);
         List* insert(Vertex *v);
         int listSize();

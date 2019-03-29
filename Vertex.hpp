@@ -12,6 +12,7 @@ class Vertex {
         Vertex *p;
     public:
     Vertex();
+    ~Vertex();
     void setColor(char color);
     void setFather(Vertex* p);
     void setDistance(int d);

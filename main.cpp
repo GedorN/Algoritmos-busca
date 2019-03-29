@@ -2,9 +2,9 @@
 #include"AdjacencyList.hpp"
 #include "Matrix.hpp"
 #include<stdlib.h>
-#include "stdio_ext.h"
+#include <stdio.h>
 #include<iostream>
-// #includelist>
+#include<list>
 using namespace std;
 
 Vertex* beginPlayer = NULL;
