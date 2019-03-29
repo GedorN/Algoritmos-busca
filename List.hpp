@@ -1,3 +1,4 @@
+#pragma once
 #include"Vertex.hpp"
 #include<iostream>
 using namespace std;

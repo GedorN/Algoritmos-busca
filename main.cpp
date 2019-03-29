@@ -1,9 +1,10 @@
 #include "List.hpp"
-#include"AdjacencyMatrix.hpp"
+#include"AdjacencyList.hpp"
+#include "Matrix.hpp"
 #include<stdlib.h>
 #include "stdio_ext.h"
 #include<iostream>
-#include<list>
+// #includelist>
 using namespace std;
 
 Vertex* beginPlayer = NULL;
@@ -19,7 +20,10 @@ int main ()
     // ad->print();
     // Vertex *v = new Vertex();
     // v->print();
-    createAdjacencyList();
+    Matrix matrix("Env.txt");
+    matrix.print();
+    AdjacencyList adjl(&matrix);
+    adjl.print();
 }
 
 void createAdjacencyList () {
@@ -116,7 +120,7 @@ void createAdjacencyList () {
     cout<< "fim tudo" << endl;
     fclose(file);   
 
-    printList(list, counter);
+    // printList(list, counter);
     
 }   
 
