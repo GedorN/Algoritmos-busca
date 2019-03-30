@@ -15,7 +15,9 @@ class List {
         List(Vertex* v);
         List* insert(Vertex *v);
         Vertex* getNode(int index);
+        Vertex* getNode(Coordinate *index);
         int listSize();
+        int lenght();
         void print();
         void remove(Coordinate sport);
         void destroyAll(List* list);

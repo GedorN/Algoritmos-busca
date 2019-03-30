@@ -74,7 +74,7 @@ void List::destroyAll(List* list)
 
 int List::listSize() 
 {
-    int total = 0;
+    int total = 0;   
     List* aux = this;
     while (aux != NULL) {
         total+= sizeof(aux); 
@@ -88,10 +88,38 @@ Vertex* List::getNode(int index) {
     List* aux = this;
     for(int i = 0 ; i < index; i++) {
         if (aux == nullptr) {
-            cout<< "Segmentation fault" << endl;
+            cout<< "Segmentation fault: no index" << endl;
             exit(-1);
         }
         aux = aux->next;
     }
     return aux->vertex;
+}
+
+Vertex* List::getNode(Coordinate *index) {
+    List* aux = this;
+    for (int i = 0; i < lenght(); i++) {
+        if (aux == nullptr) {
+            cout<< "Segmentation fault: no cooridnate" << endl;
+            exit(-1);
+        }
+        Coordinate *coord = aux->vertex->getCoordinates();
+        if(coord[0] == index[0] && coord[1] == index[1]) {
+            return aux->vertex;
+        }
+        aux = aux->next;
+
+    }
+    return NULL;
+}
+
+int List::lenght() {
+    int total = 0;
+    List *aux = this;
+    while(aux != NULL) {
+        total++;
+        aux = aux->next;
+    }
+
+    return total;
 }
