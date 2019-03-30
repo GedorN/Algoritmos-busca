@@ -20,59 +20,59 @@ AdjacencyList::AdjacencyList(Matrix* matrixObj) {
                 
                 if (matrix[i - 1][j - 1] == '.' || matrix[i - 1][j - 1] == '>' || matrix[i - 1][j - 1] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i - 1, j - 1);
                     l->setContent(matrix[i - 1][j - 1]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "ce" << endl;
+                    // cout<< "Adicionando : " << "ce" << endl;
                 }
                 if (matrix[i - 1][j] == '.' || matrix[i - 1][j] == '>' || matrix[i - 1][j] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i - 1, j);
                     l->setContent(matrix[i - 1][j]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "cr" << endl;
+                    // cout<< "Adicionando : " << "cr" << endl;
                 }
                 if (matrix[i - 1][j + 1] == '.' || matrix[i - 1][j + 1] == '>' || matrix[i - 1][j + 1] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i - 1, j + 1);
                     l->setContent(matrix[i - 1][j + 1]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "cd" << endl;
+                    // cout<< "Adicionando : " << "cd" << endl;
                 }
                 if (matrix[i][j - 1] == '.' || matrix[i][j - 1] == '>' || matrix[i][j - 1] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i, j - 1);
                     l->setContent(matrix[i][j - 1]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "re" << endl;
+                    // cout<< "Adicionando : " << "re" << endl;
                 }
                 if (matrix[i][j + 1] == '.' || matrix[i][j + 1] == '>' || matrix[i][j + 1] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i, j + 1);
                     l->setContent(matrix[i][j + 1]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "rd" << endl;
+                    // cout<< "Adicionando : " << "rd" << endl;
                 }
                 if (matrix[i + 1][j - 1] == '.' || matrix[i + 1][j - 1] == '>' || matrix[i + 1][j - 1] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i + 1, j - 1);
                     l->setContent(matrix[i + 1][j - 1]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "be" << endl;
+                    // cout<< "Adicionando : " << "be" << endl;
                 }
                 if (matrix[i + 1][j] == '.' || matrix[i + 1][j] == '>' || matrix[i + 1][j] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i + 1, j);
                     l->setContent(matrix[i + 1][j]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "br" << endl;
+                    // cout<< "Adicionando : " << "br" << endl;
                 }
                 if (matrix[i + 1][j + 1] == '.' || matrix[i + 1][j + 1] == '>' || matrix[i + 1][j + 1] == 'x') {
                     Vertex *l = new Vertex();
-                    l->setCoordinates(i, j);
+                    l->setCoordinates(i + 1, j + 1);
                     l->setContent(matrix[i + 1][j + 1]);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
-                    cout<< "Adicionando : " << "bd" << endl;
+                    // cout<< "Adicionando : " << "bd" << endl;
                 }
 
                 cout<< "lenght: "<< lenght << endl;
