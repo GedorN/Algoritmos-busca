@@ -83,3 +83,15 @@ int List::listSize()
 
     return total;
 }
+
+Vertex* List::getNode(int index) {
+    List* aux = this;
+    for(int i = 0 ; i < index; i++) {
+        if (aux == nullptr) {
+            cout<< "Segmentation fault" << endl;
+            exit(-1);
+        }
+        aux = aux->next;
+    }
+    return aux->vertex;
+}

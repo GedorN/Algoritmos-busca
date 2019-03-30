@@ -80,8 +80,16 @@ AdjacencyList::~AdjacencyList() {
     free(list);
 }
 
+int AdjacencyList::getLenght() {
+    return lenght;
+}
+
 void AdjacencyList::print() {
     for (int i = 0; i < lenght; i++ ) {
         list[i].print();
     }
+}
+
+List* AdjacencyList::getList() {
+    return list;
 }

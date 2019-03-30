@@ -11,5 +11,6 @@ class AdjacencyList {
     AdjacencyList(Matrix* matrixObj);
     ~AdjacencyList();
     List* getList();
+    int getLenght();
     void print();
 };
