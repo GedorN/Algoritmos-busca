@@ -10,56 +10,56 @@ AdjacencyList::AdjacencyList(Matrix* matrixObj) {
     for (int i = 1; i < rows - 1; i++) {
         for(int j = 1; j < columns - 1; j++) {
             // cout<< "Vou acessar a função"<< endl;
-            if(matrix[i][j] == '.') {
+            if(matrix[i][j] == '.' || matrix[i][j] == '>' || matrix[i][j] == 'x') {
                 cout<<"Acessei" << endl;
                 cout<< i << ' ' << j << endl;
                 Vertex *v = new Vertex();
                 v->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(v);
                 
-                if (matrix[i - 1][j - 1] == '.') {
+                if (matrix[i - 1][j - 1] == '.' || matrix[i - 1][j - 1] == '>' || matrix[i - 1][j - 1] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
                     cout<< "Adicionando : " << "ce" << endl;
                 }
-                if (matrix[i - 1][j] == '.') {
+                if (matrix[i - 1][j] == '.' || matrix[i - 1][j] == '>' || matrix[i - 1][j] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
                     cout<< "Adicionando : " << "cr" << endl;
                 }
-                if (matrix[i - 1][j + 1] == '.') {
+                if (matrix[i - 1][j + 1] == '.' || matrix[i - 1][j + 1] == '>' || matrix[i - 1][j + 1] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
                     cout<< "Adicionando : " << "cd" << endl;
                 }
-                if (matrix[i][j - 1] == '.') {
+                if (matrix[i][j - 1] == '.' || matrix[i][j - 1] == '>' || matrix[i][j - 1] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
                     cout<< "Adicionando : " << "re" << endl;
                 }
-                if (matrix[i][j + 1] == '.') {
+                if (matrix[i][j + 1] == '.' || matrix[i][j + 1] == '>' || matrix[i][j + 1] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
                     cout<< "Adicionando : " << "rd" << endl;
                 }
-                if (matrix[i + 1][j - 1] == '.') {
+                if (matrix[i + 1][j - 1] == '.' || matrix[i + 1][j - 1] == '>' || matrix[i + 1][j - 1] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
                     cout<< "Adicionando : " << "be" << endl;
                 }
-                if (matrix[i + 1][j] == '.') {
+                if (matrix[i + 1][j] == '.' || matrix[i + 1][j] == '>' || matrix[i + 1][j] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
                     cout<< "Adicionando : " << "br" << endl;
                 }
-                if (matrix[i + 1][j + 1] == '.') {
+                if (matrix[i + 1][j + 1] == '.' || matrix[i + 1][j + 1] == '>' || matrix[i + 1][j + 1] == 'x') {
                     Vertex *l = new Vertex();
                     l->setCoordinates(i, j);
                     list[lenght - 1] = *list[lenght - 1].insert(l);
