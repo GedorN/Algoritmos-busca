@@ -110,7 +110,23 @@ Vertex* List::getNode(Coordinate *index) {
         aux = aux->next;
 
     }
-    return NULL;
+    return nullptr;
+}
+
+Vertex* List::getNode(char content) {
+    List* aux = this;
+    for (int i = 0; i < lenght(); i++) {
+        if (aux == nullptr) {
+            cout<< "Segmentation fault: no cooridnate" << endl;
+            exit(-1);
+        }
+        if(aux->vertex->getContent() == content) {
+            return aux->vertex;
+        }
+        aux = aux->next;
+
+    }
+    return nullptr;
 }
 
 int List::lenght() {

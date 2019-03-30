@@ -7,6 +7,7 @@ Vertex::Vertex() {
     distance = 0;
     p = nullptr;
     color = WHITE;
+    content = NULL;
 }
 
 Vertex::~Vertex() {
@@ -55,4 +56,16 @@ void Vertex::print() {
 
 void Vertex::del() {
     delete this;
+}
+
+void Vertex::setContent(char c) {
+    content = c;
+}
+
+char Vertex::getContent() {
+    return content;
+}
+
+char Vertex::getColor() {
+    return color;
 }

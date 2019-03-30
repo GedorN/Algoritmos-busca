@@ -16,6 +16,7 @@ class List {
         List* insert(Vertex *v);
         Vertex* getNode(int index);
         Vertex* getNode(Coordinate *index);
+        Vertex* getNode(char content);
         int listSize();
         int lenght();
         void print();
