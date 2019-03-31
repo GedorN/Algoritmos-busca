@@ -13,7 +13,7 @@ class List {
         List();
         ~List();
         List(Vertex* v);
-        List* insert(Vertex *v);
+        void insert(Vertex *v);
         Vertex* getNode(int index);
         Vertex* getNode(Coordinate *index);
         Vertex* getNode(char content);

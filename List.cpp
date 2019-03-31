@@ -8,6 +8,8 @@ List::List()
     next = nullptr;
 }
 
+
+
 List::~List() {
     cout<< "Destruindo List" << endl;
     List* walker = this;
@@ -25,34 +27,35 @@ List::List(Vertex* v)
     next = nullptr;
 } 
 
-List* List::insert(Vertex* v)
+void List::insert(Vertex* v)
 { 
-    List *created = new List(v);
     List *aux = this;
     if (aux->vertex == nullptr) {
-        return created;
+        cout<< "Novo cara========="<<endl;
+        vertex = v;
+        next = nullptr;
+        // return created;
+    } else {
+        List *created = new List(v);
+        while(aux->next != nullptr) {
+            aux = aux->next;
+        }
+        aux->next = created;
     }
-    while(aux->next != nullptr) {
-        aux = aux->next;
-    }
-    aux->next = created;
 
-    return this;
+    // return this;
 }
 
 void List::print()
 {
     List *aux = this;
     if(vertex == nullptr) {
-        cout<<"cheguei aqui" << endl;
         exit(9);
     }
-    do {
-        int *a = aux->vertex->getCoordinates();
-        cout << "(" << a[0] << ", " << a[1] << ")";
+    while(aux != nullptr) {
+        cout << "(" << aux->vertex->getCoordinates()[0] << ", " << aux->vertex->getCoordinates()[1] << ")";
         aux = aux->next;
-
-    } while (aux != nullptr);
+    }
     cout << endl;
 }
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "Matrix.hpp"
 #include "List.hpp"
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 class AdjacencyList {
     private:

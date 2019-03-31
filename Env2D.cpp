@@ -30,7 +30,7 @@ Use the keyboard to control the movements of the 'robot':
 */
 
 
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>

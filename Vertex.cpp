@@ -20,6 +20,7 @@ void Vertex::setCoordinates(int *c) {
 }
 
 void Vertex::setCoordinates(int x, int y) {
+    // cout<< "Adicionando coordenadas: " << x << " " << y<< endl; 
     coordinates[0] = x;
     coordinates[1] = y;
 }

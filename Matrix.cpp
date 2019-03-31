@@ -1,5 +1,5 @@
 #include "Matrix.hpp"
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 
 Matrix::Matrix(char* maze) {
