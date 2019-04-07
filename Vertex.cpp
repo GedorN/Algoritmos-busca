@@ -11,7 +11,7 @@ Vertex::Vertex() {
 }
 
 Vertex::~Vertex() {
-    
+    cout <<"dying"<<endl;
 }
 
 void Vertex::setCoordinates(int *c) {
@@ -20,7 +20,7 @@ void Vertex::setCoordinates(int *c) {
 }
 
 void Vertex::setCoordinates(int x, int y) {
-    // cout<< "Adicionando coordenadas: " << x << " " << y<< endl; 
+    // cout<< "Adicionando coordenadas: " << x << " " << y<< endl;
     coordinates[0] = x;
     coordinates[1] = y;
 }
@@ -49,11 +49,6 @@ int Vertex::getDistance() {
     return distance;
 }
 
-void Vertex::print() {
-    cout<< "Coordinates: (" << coordinates[0] << ", " << coordinates[1]<< ")" << endl;
-    cout<< "Distance: " << distance << endl;
-    cout<< "Color: " << color << endl;
-}
 
 void Vertex::del() {
     delete this;
@@ -69,4 +64,62 @@ char Vertex::getContent() {
 
 char Vertex::getColor() {
     return color;
+}
+
+void Vertex::printCoords() {
+    cout << "(" << coordinates[0] << ", " << coordinates[1] << ") ";
+}
+
+void Vertex::print() {
+    cout << "PAI: ";
+    if(p != nullptr) {
+        p->printCoords();
+        cout<<endl;
+    } else {
+        cout << "null" << endl; ;
+    }
+    cout<< "Coordenadas: ";
+    printCoords();
+    cout<<endl;
+    
+    cout<< "CONTEUDO: " << content << endl;
+
+    cout<<"COR: " << color;
+
+    cout<< " >> ";
+    list<int>::iterator it;
+    for(it = neighborhoods.begin(); it != neighborhoods.end(); it++) {
+        cout<< *it << " ";
+    }
+
+    cout << endl << endl;
+}
+
+void Vertex::setNeighborhood(int neighborhood) {
+    neighborhoods.push_back(neighborhood);
+}
+
+void Vertex::getNeighborhoods(list<int> &out) {
+    list<int>::iterator i;
+    for(i = neighborhoods.begin(); i != neighborhoods.end(); i++) {
+        out.push_back(*i);
+    }
+}
+
+int Vertex::getNeighborhoodsNumber() {
+    cout<< "Vizinhos: " << neighborhoods.size() << endl;
+    return neighborhoods.size();
+}
+
+int Vertex::getNeighborhood(int index) {
+    list<int>::iterator it;
+    int i = 0;
+    for(it = neighborhoods.begin(), i = 0; it != neighborhoods.end(); i++, it++) {
+        if(i == index) {
+            cout << "Returning: " << *it <<endl;
+            return *it;
+        }
+    }
+    //  printf("NOBODY==================================");
+    return NULL;
 }

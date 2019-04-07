@@ -20,7 +20,7 @@ int main ()
     Matrix matrix("Env.txt");
     matrix.print();
     AdjacencyList adjl(&matrix);
-    // adjl.print();
+    adjl.print();
     BreadthFirstSearch bfs(&adjl);
     
 }
