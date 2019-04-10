@@ -2,6 +2,7 @@
 #include"AdjacencyList.hpp"
 #include "Matrix.hpp"
 #include "BreadthFirstSearch.hpp"
+#include "AStar.hpp"
 #include<stdlib.h>
 #include <stdio_ext.h>
 #include<iostream>
@@ -20,7 +21,7 @@ int main ()
     Matrix matrix("Env.txt");
     matrix.print();
     AdjacencyList adjl(&matrix);
-    adjl.print();
-    BreadthFirstSearch bfs(&adjl);
-    
+    // adjl.print();
+    // BreadthFirstSearch bfs(&adjl);
+    AStar as(&adjl);
 }

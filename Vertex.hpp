@@ -12,6 +12,9 @@ class Vertex {
         char color;
         int distance;
         char content;
+        double f;
+        double g;
+        double h;
         list<int> neighborhoods;
         Vertex *p;
     public:

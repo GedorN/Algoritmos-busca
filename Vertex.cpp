@@ -4,6 +4,7 @@ using namespace std;
 Vertex::Vertex() {
     coordinates[0] = NULL;
     coordinates[1] = NULL;
+    f = g = h = 0;
     distance = 0;
     p = nullptr;
     color = WHITE;
