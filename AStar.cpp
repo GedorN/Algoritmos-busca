@@ -7,7 +7,7 @@ AStar::AStar(AdjacencyList* adjl) {
     list<Vertex *> openList;
     Vertex* list = adjl->getList();
 
-    list[0].print();
+    // list[0].print();
 
     for(int i = 0; i < adjl->getLenght(); i++) {
         if(list[i].getContent() == '>') {
@@ -16,6 +16,10 @@ AStar::AStar(AdjacencyList* adjl) {
             break;
         }
     }
+
+    closedList.front()->print();
+
+
 
 }
 
