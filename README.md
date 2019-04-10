@@ -1,1 +1,1 @@
-# Aloritmos de Busca implementados em C++
+# Algoritmos de Busca implementados em C++
