@@ -5,6 +5,6 @@ Gedor Neto e Camila Antiqueira
 
 ### Dúvidas:
 Entrar em contato com:
-contato@gedor.dev `
+contato@gedor.dev  
 camilaantiqueira@gmail.com
  
