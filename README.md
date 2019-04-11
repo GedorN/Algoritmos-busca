@@ -1,9 +1,10 @@
 # Algoritmos de busca implementados em C++
 
-#### Algoritmos desenvolvidos por: Gedor Neto e Camila Antiqueira
+#### Algoritmos desenvolvidos por: 
+Gedor Neto e Camila Antiqueira
 
 ### Dúvidas:
 Entrar em contato com:
-contato@gedor.dev
+contato@gedor.dev `
 camilaantiqueira@gmail.com
  
