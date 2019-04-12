@@ -32,3 +32,9 @@ clean:
 
 execClean:
 	rm -f exe
+
+rebuildAndRun:
+	make clean
+	make execClean
+	make
+	./exe

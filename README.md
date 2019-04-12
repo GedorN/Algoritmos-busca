@@ -4,7 +4,7 @@
 Gedor Neto e Camila Antiqueira
 
 ### Dúvidas:
-Entrar em contato com:
+Entrar em contato com:  
 contato@gedor.dev  
 camilaantiqueira@gmail.com
  

@@ -8,4 +8,6 @@ class AStar {
     public:
         AStar(AdjacencyList* adjl);
         ~AStar();
+        bool isOnList(list<Vertex*> list, Vertex *element);
+        void sort(list<Vertex*> *list);
 };
