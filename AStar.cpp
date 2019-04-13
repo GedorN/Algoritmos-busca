@@ -30,17 +30,20 @@ AStar::AStar(AdjacencyList* adjl) {
     }
     openList[0]->print();
     end->print();
-    getchar();
+    // getchar();
     while(openList.size() > 0) {
         aux= openList.front();
         cout<< "WHO IS IN FRONT?"<<endl;
         aux->print();
-        getchar();
+        // getchar();
 
         if(aux->getContent() == 'x' ) {
             cout<< "ACHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOU========================"<< endl;
             aux->print();
-            getchar();
+            tracePath(aux);
+            printPath();
+            // getchar();
+            break;
         }
         for(int i = 0; i < aux->getNeighborhoodsNumber(); i++) {
             Vertex *neighborhood = &list[aux->getNeighborhood(i)];
@@ -75,7 +78,7 @@ AStar::AStar(AdjacencyList* adjl) {
             } else {
                 cout << "Esse já ta na lista" << endl;
                 neighborhood->print();
-                getchar();
+                // getchar();
             }
         }
         closedList.push_back(openList.front());
@@ -86,9 +89,6 @@ AStar::AStar(AdjacencyList* adjl) {
         printList(openList);
     }
     
-
-
-
 }
 
 AStar::~AStar() {
@@ -127,6 +127,24 @@ bool AStar::isOnList(vector<Vertex*> list, Vertex *element) {
 void AStar::printList(vector<Vertex *> list) {
     for (int i = 0; i < list.size(); i++) {
         list[i]->print();
-        getchar();
+        // getchar();
     }
+}
+
+void AStar::tracePath(Vertex* vertex) {
+    Vertex* aux = vertex;
+    while(aux != nullptr) {
+        path.push_back(aux);
+        aux = aux->getFather();
+    }
+}
+
+void AStar::printPath() {
+    cout << "============ CAMINHO ===========================" <<endl;
+    std::list<Vertex *>::iterator i;
+    for (i = path.begin(); i != path.end(); i++) {
+        cout << "("<< (*i)->getCoordinates()[0] << ", " << (*i)->getCoordinates()[1] << ")" << endl;
+    }
+    // for (int i = 0; i < path.size(); i++) {
+    // }
 }

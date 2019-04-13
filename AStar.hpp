@@ -12,4 +12,6 @@ class AStar {
         bool isOnList(vector<Vertex*> list, Vertex *element);
         void sort(vector<Vertex*> *list);
         void printList(vector<Vertex *> list);
+        void tracePath(Vertex* vertex);
+        void printPath();
 };
