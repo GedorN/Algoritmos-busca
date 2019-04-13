@@ -1,6 +1,7 @@
 #pragma once
 #include "AdjacencyList.hpp"
 #include <list>
+#include <vector>
 
 class AStar {
     private:
@@ -8,6 +9,7 @@ class AStar {
     public:
         AStar(AdjacencyList* adjl);
         ~AStar();
-        bool isOnList(list<Vertex*> list, Vertex *element);
-        void sort(list<Vertex*> *list);
+        bool isOnList(vector<Vertex*> list, Vertex *element);
+        void sort(vector<Vertex*> *list);
+        void printList(vector<Vertex *> list);
 };

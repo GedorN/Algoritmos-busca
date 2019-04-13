@@ -27,7 +27,13 @@ class Vertex {
     void setCoordinates(int x, int y);
     void setContent(char c);
     void setNeighborhood(int neighborhood);
+    void setFCost(double nf);
+    void setGCost(double ng);
+    void setHCost(double nh);
     char getContent();
+    double getFCost();
+    double getGCost();
+    double getHCost();
     Coordinate* getCoordinates();
     Vertex* getFather();
     int getDistance();

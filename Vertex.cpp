@@ -85,6 +85,10 @@ void Vertex::print() {
     
     cout<< "CONTEUDO: " << content << endl;
 
+    cout<< "F: " << f << endl;
+    cout<< "G: " << g << endl;
+    cout<< "H: " << h << endl;
+
     cout<<"COR: " << color;
 
     cout<< " >> ";
@@ -123,4 +127,32 @@ int Vertex::getNeighborhood(int index) {
     }
     //  printf("NOBODY==================================");
     return NULL;
+}
+
+double Vertex::getFCost() {
+    return f;
+}
+
+
+double Vertex::getHCost() {
+    return h;
+}
+
+
+double Vertex::getGCost() {
+    return g;
+}
+
+void Vertex::setFCost(double nf) {
+    f = nf;
+}
+
+
+void Vertex::setHCost(double nh) {
+    h= nh;
+}
+
+
+void Vertex::setGCost(double ng) {
+    g= ng;
 }
