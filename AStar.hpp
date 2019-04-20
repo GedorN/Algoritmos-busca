@@ -14,4 +14,5 @@ class AStar {
         void printList(vector<Vertex *> list);
         void tracePath(Vertex* vertex);
         void printPath();
+        list<Vertex*> getPath();
 };

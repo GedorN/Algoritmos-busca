@@ -134,7 +134,7 @@ void AStar::printList(vector<Vertex *> list) {
 void AStar::tracePath(Vertex* vertex) {
     Vertex* aux = vertex;
     while(aux != nullptr) {
-        path.push_back(aux);
+        path.push_front(aux);
         aux = aux->getFather();
     }
 }
@@ -147,4 +147,8 @@ void AStar::printPath() {
     }
     // for (int i = 0; i < path.size(); i++) {
     // }
+}
+
+list<Vertex*> AStar::getPath() {
+    return path;
 }

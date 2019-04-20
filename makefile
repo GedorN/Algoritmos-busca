@@ -3,8 +3,8 @@ all: saida
 	@echo "Compilação concluída"
 	@echo " "
 
-saida: main.o Vertex.o Matrix.o List.o BreadthFirstSearch.o AdjacencyList.o AStar.o
-	g++ -o exe main.o Vertex.o Matrix.o List.o BreadthFirstSearch.o AdjacencyList.o AStar.o
+saida: main.o Vertex.o Matrix.o List.o BreadthFirstSearch.o AdjacencyList.o AStar.o GeneticAlgorithm.o Animation.o
+	g++ -o exe main.o Vertex.o Matrix.o List.o BreadthFirstSearch.o AdjacencyList.o AStar.o GeneticAlgorithm.o Animation.o
 
 main.o: main.cpp
 	g++ -o main.o -c main.cpp
@@ -27,6 +27,11 @@ Matrix.o: Matrix.cpp
 AdjacencyList.o: AdjacencyList.cpp
 	g++ -o AdjacencyList.o -c AdjacencyList.cpp
 
+GeneticAlgorithm.o: GeneticAlgorithm.cpp
+	g++ -o GeneticAlgorithm.o -c GeneticAlgorithm.cpp
+
+Animation.o: Animation.cpp
+	g++ -o Animation.o -c Animation.cpp
 clean: 
 	rm -f *.o
 
