@@ -13,7 +13,6 @@ BreadthFirstSearch::BreadthFirstSearch(AdjacencyList *adjl) {
     Vertex *v = nullptr;
     // Vertex* pFather = nullptr;
 
-    list[0].print();
 
     for (int lIndex = 0; lIndex < adjl->getLenght(); lIndex++)  {
         if(list[lIndex].getContent() == '>') {
@@ -24,13 +23,11 @@ BreadthFirstSearch::BreadthFirstSearch(AdjacencyList *adjl) {
             break;
         }
     }
-    queue.front()->print();
     // cout<< aux->print()<<endl;
     cout << "============= inicio ================="<< endl;
 
 
     while(queue.size() > 0) {
-        cout<< "Queue size: " << queue.size() << endl;
 
         aux = queue.front();
         queue.pop_front();
@@ -41,38 +38,41 @@ BreadthFirstSearch::BreadthFirstSearch(AdjacencyList *adjl) {
 
                 list[aux->getNeighborhood(i)].setFather(aux);
                 list[aux->getNeighborhood(i)].setColor(GREY);
-              
-                cout<< "================== ELE====================== "<<endl;
-                list[aux->getNeighborhood(i)].print();
-                cout<< "=================PAI DELE ===================="<<endl;
-                list[aux->getNeighborhood(i)].getFather()->print();
-
 
                 queue.push_back(&list[aux->getNeighborhood(i)]);
             }
         }
         aux->setColor(BLACK);
         if (aux->getContent() == 'x') {
-            Vertex *backTrack = aux;
-            while(backTrack != nullptr) {
-                path.push_back(backTrack);
-                backTrack= backTrack->getFather();
-            }
+           tracePath(aux);
         }
     // v= nullptr;
 
     }
     // cout<< "Queue size: " << queue.size() << endl;
-   cout << "DESEJA VER O FIM DO CAMINHO? "<<endl;
-   getchar();
-   std::list<Vertex *>::iterator alpha;
-   for(alpha = path.begin(); alpha != path.end(); alpha++ ){
-       cout << "(" << (*alpha)->getCoordinates()[0] << ", " << (*alpha)->getCoordinates()[1] << ")" <<endl;
-    // (*alpha)->print();
-   }
-   getchar();
 }
 
 BreadthFirstSearch::~BreadthFirstSearch() {
 
+}
+
+list<Vertex*> BreadthFirstSearch::getPath() {
+    return path;
+}
+
+void BreadthFirstSearch::tracePath(Vertex* vertex) {
+    Vertex *backTrack = vertex;
+    while(backTrack != nullptr) {
+        path.push_front(backTrack);
+        backTrack= backTrack->getFather();
+    }
+}
+
+void BreadthFirstSearch::printPath() {
+    cout << "============ CAMINHO ===========================" <<endl;
+    std::list<Vertex *>::iterator alpha;
+    for(alpha = path.begin(); alpha != path.end(); alpha++ ){
+       cout << "(" << (*alpha)->getCoordinates()[0] << ", " << (*alpha)->getCoordinates()[1] << ")" <<endl;
+        // (*alpha)->print();
+    }
 }

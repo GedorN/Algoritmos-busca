@@ -7,4 +7,7 @@ class BreadthFirstSearch {
     public:
         BreadthFirstSearch(AdjacencyList* adsl);
         ~BreadthFirstSearch();
+        void tracePath(Vertex* vertex);
+        void printPath();
+        list<Vertex*> getPath();
 };

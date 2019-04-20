@@ -11,7 +11,7 @@
 #include<list>
 using namespace std;
 
-
+int kbhit(void);
 int main ()
 {   
     // AdjacencyMatrix *ad = new AdjacencyMatrix();
@@ -24,9 +24,12 @@ int main ()
     matrix.print();
     AdjacencyList adjl(&matrix);
     // adjl.print();
-    // BreadthFirstSearch bfs(&adjl);
-    AStar as(&adjl);
-    Animation a(&matrix);
+    
+    // bfs.printPath();
+
+    // as.printPath();
+    // getchar();
+
     // Robot a;
     // a.execute(as.getPath());
     // a->execute();
@@ -34,8 +37,59 @@ int main ()
     
     // GeneticAlgorithm ga(&adjl);
     // GeneticAlgorithm ga(&adjl);
+    char input = '0';
+    system("clear");
+    printf("BEM VINDO A BUSCAS INTELIGENTES: \n");
+    printf("Insira o número correspondente da busca desejada \n");
+    printf("(1) - Busca em largura \n");
+    printf("(2) - Busca A* \n");
+    while(input != 'q') {
+        input = kbhit();
+        if (input != 0) {
+            input = getchar();
+            if(input == '1') {
+                BreadthFirstSearch bfs(&adjl);
+                Animation a(&matrix, bfs.getPath());
+            } else if (input == '2') {
+                AStar as(&adjl);
+                Animation a(&matrix, as.getPath());
+            }
+        system("clear");
+        printf("BEM VINDO A BUSCAS INTELIGENTES: \n");
+        printf("Insira o número correspondente da busca desejada \n");
+        printf("(1) - Busca em largura \n");
+        printf("(2) - Busca A* \n");
+        }
+
+    }
 
 }
+int kbhit(void)
+    {
+      struct termios oldt, newt;
+      int ch;
+      int oldf;
+     
+      tcgetattr(STDIN_FILENO, &oldt);
+      newt = oldt;
+      newt.c_lflag &= ~(ICANON | ECHO);
+      tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+      oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+      fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+     
+      ch = getchar();
+     
+      tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+      fcntl(STDIN_FILENO, F_SETFL, oldf);
+     
+      if(ch != EOF)
+      {
+        ungetc(ch, stdin);
+        return 1;
+      }
+     
+      return 0;
+    }
 
 
 // void execute(list<Vertex *> path) {

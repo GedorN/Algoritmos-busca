@@ -38,10 +38,7 @@ AStar::AStar(AdjacencyList* adjl) {
         // getchar();
 
         if(aux->getContent() == 'x' ) {
-            cout<< "ACHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOU========================"<< endl;
-            aux->print();
             tracePath(aux);
-            printPath();
             // getchar();
             break;
         }
@@ -86,7 +83,6 @@ AStar::AStar(AdjacencyList* adjl) {
         std::sort(openList.begin(), openList.end(), [](Vertex* a, Vertex* b) {
             return a->getFCost() < b->getFCost();
         });
-        printList(openList);
     }
     
 }
