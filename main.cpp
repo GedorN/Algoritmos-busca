@@ -2,6 +2,7 @@
 #include"AdjacencyList.hpp"
 #include "Matrix.hpp"
 #include "BreadthFirstSearch.hpp"
+#include "GeneticAlgorithm.hppew"
 #include "AStar.hpp"
 #include<stdlib.h>
 #include <stdio_ext.h>
@@ -23,5 +24,8 @@ int main ()
     AdjacencyList adjl(&matrix);
     // adjl.print();
     // BreadthFirstSearch bfs(&adjl);
-    AStar as(&adjl);
+    // AStar as(&adjl);
+    // GeneticAlgorithm ga(&adjl);
+    GeneticAlgorithm ga(&adjl);
+
 }
