@@ -9,6 +9,8 @@ class GeneticAlgorithm {
         Vertex *list;
         Vertex *begin;
         Vertex *end;
+        int ibegin;
+        int iend;
         vector<Vertex *> path;
         double currentCost;
         int** population;
