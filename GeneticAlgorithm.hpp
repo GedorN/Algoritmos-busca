@@ -30,6 +30,7 @@ class GeneticAlgorithm {
         void start();
         void free_newPopulation();
         void free_Population();
+        void free_Descendants();
         void mutation();
         int roulette_weight(double *pointer_costs);
         void build_population(double *pointer_costs1,double *pointer_costs2);

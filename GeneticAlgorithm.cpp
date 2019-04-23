@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include<math.h>
+#include<time.h>
 using namespace std;
 
 GeneticAlgorithm::GeneticAlgorithm(AdjacencyList* adjl) {
@@ -66,6 +67,7 @@ GeneticAlgorithm::GeneticAlgorithm(AdjacencyList* adjl) {
 GeneticAlgorithm::~GeneticAlgorithm(){
     free_newPopulation();
     free_Population();
+    free_Descendants();
 }
 
 double* GeneticAlgorithm::fitness(int **population_matrix) {
@@ -192,6 +194,7 @@ void GeneticAlgorithm::crossover(double *pointer_costs)
     {
         ind = 1;
 
+        //srand(time(NULL));
         while(ind == 1)
         {
             //incicializar as funções rand com a hora
@@ -245,6 +248,7 @@ void GeneticAlgorithm::selectInitialPopulation(int *array, int lenght, int avali
     int j = 0;
     bool alreadyHas = false;
     while(i < lenght) {
+        
         cout << "choosing population..." << endl;
         alreadyHas = false;
         int position = rand() % avaliablePopulation;
@@ -314,7 +318,7 @@ void GeneticAlgorithm::mutation()
     int ind_vertex,ind_column, ind_row;
 
     //  Para fazertaxa de 0.1 ou 0.001 bastaria chamar,respectivamente, a função mutation após 10 ou 100 loops do ga;
-    
+    //srand(time(NULL));
     ind_column = rand() % 10; // indica qual posição irá acontecer a mutação
     ind_row = rand() % 10; 
     ind_vertex = rand() % sizeListVertex;
@@ -388,6 +392,8 @@ void  GeneticAlgorithm::build_population(double *pointer_costs1,double *pointer_
       population_aux[i] = (int*)malloc(sizeof(int)*columnsP);
   }  
 
+
+  //srand(time(NULL));
   for(int i = 0; i < rowsP; i++)
   {
       
@@ -428,23 +434,37 @@ void GeneticAlgorithm::start()
     int* pointer;
     int* pointerNew;
     double fit = 0;
-    int aux;
+    int aux, counter = 0,i = 0;
 
-   while(fit < 0.75){
-
+  while(fit < 0.71){
+    
+    srand(time(NULL)*i);
+    i++;    
+    
+    printf("11111111111111111111111111111111111111111111111111111111111111111111111111111111\n");
     pointerCosts = fitness(population);
+    printf("222222222222222222222222222222222222222222222222222222222222222222222222222222222222222\n");
     pointer = insertionSort(pointerCosts);
+    printf("44444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444\n");
     selectAfterFit(pointer);
+    printf("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555\n");
     fit = pointerCosts[0];
+    printf("FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIT: %lf\n",fit);
     crossover(pointerCosts);
+    printf("7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777\n");
     printf("FIT: %lf\n",fit);
     mutation();
+    printf("888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888\n");
     aux = roulette_weight(pointerCosts);
     printf("AFTER ROULETTE: %d\n",aux);
 
+    printf("1010101001010110100101010101010001010101001010101010101010101010100101010101011001010101001\n");
     pointerCostsNew = fitness(descendants);
+    printf("TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSTE\n");
     pointerNew = insertionSort(pointerCostsNew);
+    printf("HAHAHAHAHHAHAHAHHAHAHAHAHAHAHAHHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAHAHAH\n");
     selectAfterFit(pointerNew);
+    printf("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\n");
     build_population(pointerCosts,pointerCostsNew);
     }
     //free_Population();
@@ -470,6 +490,15 @@ void GeneticAlgorithm::free_Population()
         free(population[i]);
     }
     free(population);
+}
+
+void GeneticAlgorithm::free_Descendants()
+{
+    for(int i = 0; i < rowsP ; i++)
+    {
+        free(descendants[i]);
+    }
+    free(descendants);
 }
 
 
