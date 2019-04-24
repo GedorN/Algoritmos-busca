@@ -29,6 +29,33 @@ int main ()
     AdjacencyList* aux;
     aux = &adjl;
     GeneticAlgorithm ga(aux);
+        char input = '0';
+    system("clear");
+    printf("BEM VINDO A BUSCAS INTELIGENTES: \n");
+    printf("Insira o número correspondente da busca desejada \n");
+    printf("(1) - Busca em largura \n");
+    printf("(2) - Busca A* \n");
+    while(input != 'q') {
+        input = kbhit();
+        if (input != 0) {
+            input = getchar();
+            if(input == '1') {
+                BreadthFirstSearch bfs(&adjl);
+                Animation a(&matrix, bfs.getPath());
+            } else if (input == '2') {
+                AStar as(&adjl);
+                Animation a(&matrix, as.getPath());
+            }
+        system("clear");
+        printf("BEM VINDO A BUSCAS INTELIGENTES: \n");
+        printf("Insira o número correspondente da busca desejada \n");
+        printf("(1) - Busca em largura \n");
+        printf("(2) - Busca A* \n");
+        }
+
+    }
+
+
     // adjl.print();
     
     // bfs.printPath();
