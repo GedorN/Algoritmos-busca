@@ -11,10 +11,11 @@ GeneticAlgorithm::GeneticAlgorithm(AdjacencyList* adjl) {
     currentCost = 0;
     new_population = nullptr;
     descendants = nullptr;
+    best_walk = nullptr;
     //pointer_costs = nullptr;
     sizeListVertex = adjl->getLenght();
-    rowsP = 2000; 
-    columnsP = 5;
+    rowsP = 20; 
+    columnsP = 7;
     
 
 
@@ -83,7 +84,7 @@ double* GeneticAlgorithm::fitness(int **population_matrix) {
     int* pointer;
     Coordinate* start;
     Coordinate* exit;
-    int index;
+    int index,next_index;
 
     start = begin -> getCoordinates();
     exit = end -> getCoordinates();
@@ -102,12 +103,15 @@ double* GeneticAlgorithm::fitness(int **population_matrix) {
 
         total = 0;
 
-        for (int j = 1; j < columnsP - 1; j++) {
+        for (int j = 0; j < (columnsP - 1); j++) {
             index = population_matrix[i][j];
-            list[index].setGCost( abs(list[index].getCoordinates()[0] - begin->getCoordinates()[0]) + abs(list[index].getCoordinates()[1] - begin->getCoordinates()[1]));
-            list[index].setHCost( abs(list[index].getCoordinates()[0] - end->getCoordinates()[0]) + abs(list[index].getCoordinates()[1] - end->getCoordinates()[1]));
-            list[index].setFCost(list[index].getGCost() + list[index].getHCost());
-            total += list[index].getFCost();        
+            next_index = population_matrix[i][j + 1];
+            total += (abs(list[index].getCoordinates()[0] - list[next_index].getCoordinates()[0])+ abs(list[index].getCoordinates()[1] - list[next_index].getCoordinates()[1]));
+           // if(j == (columnsP - 2))
+            //{
+              //  total+= (abs(list[next_index].getCoordinates()[0] - end -> getCoordinates()[0])+ abs(list[next_index].getCoordinates()[1] - end -> getCoordinates()[1]));
+            //}
+                  
         }
         costs[i] = (ideal/total);
         printf("COST: %lf\n",costs[i]);
@@ -161,7 +165,7 @@ void GeneticAlgorithm::selectAfterFit(int *vRows)
             //printf("segundo FOOOOOOR\n");
             index = vRows[i];
             //printf(" INDEX: %d\n",index);
-            new_population[i][j] = population[index][j]; // Copiando caminhos(linhas) com menores custos.
+            new_population[i][j] = population[index][j]; // Copiando caminhos(linhas) com melhores custos.
             //printf("NEW POPULATION : %d \n",new_population[i][j]);
         
         }
@@ -202,10 +206,11 @@ void GeneticAlgorithm::crossover(double *pointer_costs)
         //srand(time(NULL));
         while(ind == 1)
         {
+            
             //incicializar as funções rand com a hora
-            row1 = roulette_weight(pointer_costs);
+            row1 = rand() % rowsP;
             //printf("ROOOOOOOOOOOOOOOW1: %d\n",row1);
-            row2 = roulette_weight(pointer_costs); 
+            row2 = rand() % rowsP; 
            // printf("ROOOOOOOOOOOOOOOOOW2: %d\n", row2);
             column = rand() % columnsP; // garante aleatoriedade na posição do crossover;
             if( row1 != row2 && column != 0 && column!= columnsP - 1) // Verifica se os dois números não são iguais, deve-se fazer ainda uma verificação de pares, ou seja, verificar se não repete crossover entre pares de linhas já usados.
@@ -227,6 +232,14 @@ void GeneticAlgorithm::crossover(double *pointer_costs)
                 descendants[i][j] = new_population[row2][j];
             }
         
+        }
+        for(int h = 0; h < columnsP - 1; h++)
+        {
+            if(descendants[i][h] == descendants[i][h + 1])//para não repetir alelos próximos
+            {
+                i--;
+                h = columnsP;
+            }
         }
     }
     
@@ -409,7 +422,7 @@ void  GeneticAlgorithm::build_population(double *pointer_costs1,double *pointer_
     {
         if(i < (rowsP/2))
         {
-            row = roulette_weight(pointer_costs2);// recebe vetor de custos da new population
+            row = rand()%rowsP;// recebe vetor de custos da descendants
             population_aux[i][j] = descendants[row][j];
 
         }
@@ -442,34 +455,42 @@ void GeneticAlgorithm::start()
     int* pointer;
     int* pointerNew;
     double fit = 0;
-    int aux, counter = 0,i = 0,j = 0;
+    int aux, counter = 0,i = 0,index;
 
-  while(j < 50000){
+    best_walk = (int*)malloc(sizeof(int)*columnsP);
+
+  while(fit < 0.7){
     
-    srand(time(NULL)*i);
+    //srand(time(NULL)*i);
     i++;    
     
     pointerCosts = fitness(population);
     pointer = insertionSort(pointerCosts);
     selectAfterFit(pointer);
     fit = pointerCosts[0];
+    if(fit >= 0.7)
+    {
+        index = pointer[0];
+        printf("MELHOR CAMINHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO:\n");
+        for(int j = 0; j < columnsP; j++)
+        {
+            best_walk[j] = new_population[index][j];
+            printf("%5d",best_walk[j]);
+        }
+        printf(" \n");
+    }
     crossover(pointerCosts);
     mutation();
     aux = roulette_weight(pointerCosts);
+    //printf("AFTER ROULETTE: %d\n",aux);
 
-        for (int i = 0; i < rowsP; i++) {
-            for (int j = 0; j < columnsP; j++) {
-                population[i][j] = descendants[i][j];
-            }
-        }
-    j++;
-    printf("\n\n\nJJJJJJJJJJJJJJJJJJJJJJJJ: %d\n",j);
-    // getchar();  
+    pointerCostsNew = fitness(descendants);
+    pointerNew = insertionSort(pointerCostsNew);
+    selectAfterFit(pointerNew);
+    build_population(pointerCosts,pointerCostsNew);
+     
    }
-    //free_Population();
-    //population = new_population;
-    //free_newPopulation();
-    //}
+   
 
 }
 

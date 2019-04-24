@@ -9,13 +9,14 @@ class GeneticAlgorithm {
         Vertex *list;
         Vertex *begin;
         Vertex *end;
-        int ibegin;
+        int ibegin; 
         int iend;
         vector<Vertex *> path;
         double currentCost;
         int** population;
         int** new_population;
         int** descendants;
+        int* best_walk;
         int rowsP ; 
         int columnsP ;
         int sizeListVertex;

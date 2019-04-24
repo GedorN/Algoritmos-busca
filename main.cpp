@@ -1,6 +1,9 @@
 #include "List.hpp"
 #include"AdjacencyList.hpp"
 #include "Matrix.hpp"
+#include "List.hpp"
+#include"AdjacencyList.hpp"
+#include "Matrix.hpp"
 #include "BreadthFirstSearch.hpp"
 #include "GeneticAlgorithm.hpp"
 #include "AStar.hpp"
@@ -21,8 +24,11 @@ int main ()
     // Vertex *v = new Vertex();
     // v->print();
     Matrix matrix("Env.txt");
-    matrix.print();
+    //matrix.print();
     AdjacencyList adjl(&matrix);
+    AdjacencyList* aux;
+    aux = &adjl;
+    GeneticAlgorithm ga(aux);
     // adjl.print();
     
     // bfs.printPath();
@@ -37,32 +43,7 @@ int main ()
     
     // GeneticAlgorithm ga(&adjl);
     // GeneticAlgorithm ga(&adjl);
-    char input = '0';
-    system("clear");
-    printf("BEM VINDO A BUSCAS INTELIGENTES: \n");
-    printf("Insira o número correspondente da busca desejada \n");
-    printf("(1) - Busca em largura \n");
-    printf("(2) - Busca A* \n");
-    while(input != 'q') {
-        input = kbhit();
-        if (input != 0) {
-            input = getchar();
-            if(input == '1') {
-                BreadthFirstSearch bfs(&adjl);
-                Animation a(&matrix, bfs.getPath());
-            } else if (input == '2') {
-                AStar as(&adjl);
-                Animation a(&matrix, as.getPath());
-            }
-        system("clear");
-        printf("BEM VINDO A BUSCAS INTELIGENTES: \n");
-        printf("Insira o número correspondente da busca desejada \n");
-        printf("(1) - Busca em largura \n");
-        printf("(2) - Busca A* \n");
-        }
-
-    }
-
+  
 }
 int kbhit(void)
     {
