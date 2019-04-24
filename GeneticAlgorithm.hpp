@@ -1,6 +1,8 @@
 #pragma once
 #include "AdjacencyList.hpp"
 #include <vector>
+#include <list>
+using namespace std;
 
 
 class GeneticAlgorithm {
@@ -11,11 +13,11 @@ class GeneticAlgorithm {
         Vertex *end;
         int ibegin; 
         int iend;
-        vector<Vertex *> path;
         double currentCost;
         int** population;
         int** new_population;
-        int** descendants;
+        int** descendants; 
+        std::list<Vertex*> path;
         int* best_walk;
         int rowsP ; 
         int columnsP ;
@@ -35,6 +37,7 @@ class GeneticAlgorithm {
         void free_Population();
         void free_Descendants();
         void mutation();
+        void tracePath();
         int roulette_weight(double *pointer_costs);
         void build_population(double *pointer_costs1,double *pointer_costs2);
 };
